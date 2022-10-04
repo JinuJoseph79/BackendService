@@ -1,0 +1,11 @@
+de\myapp\ee\app\pattern\standard\microservice\config\GlobalConfig.class
+de\myapp\ee\app\pattern\standard\microservice\model\AlreadyExistsException.class
+de\myapp\ee\app\pattern\standard\microservice\service\PatternServiceImpl.class
+de\myapp\ee\app\pattern\standard\microservice\model\NotFoundExeption.class
+de\myapp\ee\app\pattern\standard\microservice\repository\PatternRepository.class
+de\myapp\ee\app\pattern\standard\microservice\config\GlobalExceptionHandler.class
+de\myapp\ee\app\pattern\standard\microservice\controller\PatternController.class
+de\myapp\ee\app\pattern\standard\microservice\BackendMain.class
+de\myapp\ee\app\pattern\standard\microservice\model\PatternDTO.class
+de\myapp\ee\app\pattern\standard\microservice\model\Pattern.class
+de\myapp\ee\app\pattern\standard\microservice\service\PatternService.class

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>standard-microservice-pattern-sample-backend</artifactId>
+    <artifactId>backend-service</artifactId>
     <name>standard-microservice-pattern-sample-backend</name>
     <description>Project holding the backend service for the FCP pattern &quot;standard microservice applications not exposing APIs&quot;</description>
     <parent>
