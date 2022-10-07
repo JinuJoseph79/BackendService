@@ -32,15 +32,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy') {
-      steps {
-        echo 'Deploying....'
-        script {
-
-          // Add steps here
-
-        }
-      }
-    }
+    
+    
   }
 }
