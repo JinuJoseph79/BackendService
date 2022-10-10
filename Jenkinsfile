@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     echo 'Initialize...' + env.BRANCH_NAME
-		    echo "PATH = ${PATH}"
+		    		echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
         echo 'Create Container Image..'
         
         script {
-		app = docker.build("test")   
+		app = docker.build("backend_service")   
           // Add steps here
 
         }
