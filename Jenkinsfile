@@ -7,6 +7,9 @@ pipeline {
         maven 'maven 3.8.6' 
         jdk 'JDK 11' 
     }
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('docker-hub-credentials')
+	}
   stages {
     stage("Initialize") {
             steps {
@@ -29,21 +32,30 @@ pipeline {
         echo 'Create Container Image..'
         
         script {
-		app = docker.build("backend_service")   
+		app = docker.build("backend_service/myapp:latest")   
           // Add steps here
 
         }
       }
     }
-    stage('Push image') {
-        steps {
-        	echo 'Push image to docker hub..'
-        	docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            	app.push("${env.BUILD_NUMBER}")
-            	app.push("latest")
-        	}
-        }
-    }
+    stage('Login') {
+			 echo 'Docker hub login..'
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+	}
+
+	stage('Push') {
+			 echo 'Docker image push..'
+			steps {
+				sh 'docker push backend_service/myapp:latest'
+			}
+	}
     
+  }
+  post {
+		always {
+			sh 'docker logout'
+		}
   }
 }
