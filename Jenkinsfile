@@ -9,6 +9,9 @@ pipeline {
     }
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('docker-hub-credentials')
+		BUILD_NAME = 'backend_service'
+		DOCKER_USER = $DOCKERHUB_CREDENTIALS_USR
+		DOCKER_REPO = 'app_services_2022'
 	}
   stages {
     stage("Initialize") {
@@ -32,7 +35,7 @@ pipeline {
         echo 'Create Container Image..'
         
         script {
-		app = docker.build("backend_service/myapp:latest")   
+		app = docker.build("${BUILD_NAME}")   
           // Add steps here
 
         }
@@ -49,8 +52,12 @@ pipeline {
 	stage('Push') {
 			
 			steps {
-			 	echo 'Docker image push..'
-				sh 'docker push backend_service/myapp:latest'
+			script {
+				 def docker_image = '${DOCKER_USER}/${DOCKER_REPO}:latest'
+			 	echo 'Docker image push.. ${docker_image}'
+			 	sh 'docke tag ${BUILD_NAME} $docker_image'
+				sh 'docker push $docker_image'
+				}
 			}
 	}
     
