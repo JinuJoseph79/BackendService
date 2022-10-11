@@ -39,15 +39,17 @@ pipeline {
       }
     }
     stage('Login') {
-			 echo 'Docker hub login..'
+			 
 			steps {
+			    echo 'Docker hub login..'
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 	}
 
 	stage('Push') {
-			 echo 'Docker image push..'
+			
 			steps {
+			 	echo 'Docker image push..'
 				sh 'docker push backend_service/myapp:latest'
 			}
 	}
